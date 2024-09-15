@@ -2902,6 +2902,25 @@ ARjs.Source = THREEx.ArToolkitSource = function (parameters) {
     }
 }
 
+
+function getDevices(deviceInfos) {
+  for (var i = 0; i !== deviceInfos.length; ++i) {
+    var deviceInfo = deviceInfos[i];
+    if (deviceInfo.kind === "videoinput") {
+      var id = deviceInfo.deviceId;
+      if (!devices.includes(id)) {
+        devices.push(id);
+      }
+    }
+  }
+}
+
+function handleError(error) {
+  console.log("Something went wrong: ", error.message, error.name);
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 //		Code Separator
 //////////////////////////////////////////////////////////////////////////////
@@ -3032,46 +3051,47 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
 
     // get available devices
     navigator.mediaDevices.enumerateDevices().then(function (devices) {
-        var userMediaConstraints = {
-            audio: false,
-            video: {
-                facingMode: 'environment',
-                width: {
-                    ideal: 640,
-                    // min: 1024,
-                    // max: 1920
-                },
-                height: {
-                    ideal: 480,
-                    // min: 776,
-                    // max: 1080
-                }
-            }
-        };
+          var constraints;
+
+      constraints = {
+      audio: false,
+      video: {
+        facingMode: "environment",
+        width: {
+          ideal: 640,
+        },
+        height: {
+          ideal: 480,
+        },
+      },
+    };
+    selectedCamera = "env";
 
 
+  var domElement = document.querySelector("#arjs-video");
 
+  var oldStream = domElement.srcObject;
+  oldStream.getTracks().forEach(function (track) {
+    track.stop();
+    console.log("Current stream stopped");
+  });
+
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(function (stream) {
+      
+      domElement.srcObject = stream;
+
+      var event = new CustomEvent("camera-init", { stream: stream });
+      window.dispatchEvent(event);
+      console.log("Event dispatched. Changing camera.");
+
+      document.body.addEventListener("click", function () {
+        domElement.play();
+      });
+    })
+    .catch(handleError);
 	    
-        // get a device which satisfy the constraints
-        navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
-            // set the .src of the domElement
-            domElement.srcObject = stream;
-		
-            var event = new CustomEvent('camera-init', { stream: stream });
-            window.dispatchEvent(event);
-            // to start the video, when it is possible to start it only on userevent. like in android
-            document.body.addEventListener('click', function () {
-                domElement.play();
-            });
-            // domElement.play();
-
-            onReady();
-        }).catch(function (error) {
-            onError({
-                name: error.name,
-                message: error.message
-            });
-        });
     }).catch(function (error) {
         onError({
             message: error.message
