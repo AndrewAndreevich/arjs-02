@@ -3037,12 +3037,12 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             video: {
                 facingMode: 'environment',
                 width: {
-                    ideal: _this.parameters.sourceWidth,
+                    ideal: 640,
                     // min: 1024,
                     // max: 1920
                 },
                 height: {
-                    ideal: _this.parameters.sourceHeight,
+                    ideal: 480,
                     // min: 776,
                     // max: 1080
                 }
@@ -3054,12 +3054,16 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
                 exact: _this.parameters.deviceId
             };
         }
+	alert(_this.parameters.deviceId);    
 
+	    alert( navigator.mediaDevices.getUserMedia(userMediaConstraints));   
+
+	    
         // get a device which satisfy the constraints
         navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
             // set the .src of the domElement
             domElement.srcObject = stream;
-
+		
             var event = new CustomEvent('camera-init', { stream: stream });
             window.dispatchEvent(event);
             // to start the video, when it is possible to start it only on userevent. like in android
