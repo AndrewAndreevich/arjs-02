@@ -3049,14 +3049,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             }
         };
 
-        if (null !== _this.parameters.deviceId) {
-            userMediaConstraints.video.deviceId = {
-                exact: _this.parameters.deviceId
-            };
-        }
-	alert(_this.parameters.deviceId);    
 
-	    alert( navigator.mediaDevices.getUserMedia(userMediaConstraints));   
 
 	    
         // get a device which satisfy the constraints
