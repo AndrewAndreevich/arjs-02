@@ -1,5 +1,5 @@
 var devices = [];
-var selectedCamera = "user";
+var selectedCamera = "env";
 
 function handleError(error) {
   console.log("Something went wrong: ", error.message, error.name);
