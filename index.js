@@ -15,6 +15,7 @@ function getDevices(deviceInfos) {
       }
     }
   }
+  devices.reverse();
 }
 
 function switchCam(e) {
