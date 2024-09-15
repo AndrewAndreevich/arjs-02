@@ -20,22 +20,7 @@ function getDevices(deviceInfos) {
 function switchCam(e) {
   var constraints;
 
-  if (selectedCamera === "env") {
-    constraints = {
-      audio: false,
-      video: {
-        facingMode: "user",
-        width: {
-          ideal: 640,
-        },
-        height: {
-          ideal: 480,
-        },
-      },
-    };
-    selectedCamera = "user";
-  } else {
-    constraints = {
+      constraints = {
       audio: false,
       video: {
         facingMode: "environment",
@@ -48,8 +33,7 @@ function switchCam(e) {
       },
     };
     selectedCamera = "env";
-  }
-  console.log("Contraints selected. Attempting to change camera...");
+
 
   var domElement = document.querySelector("#arjs-video");
 
