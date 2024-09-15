@@ -37,8 +37,12 @@
       arjs=" sourceWidth: 1024; sourceHeight: 776; displayWidth: 1024; displayHeight: 776;  detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
-      switch-camera
+      
     >
+
+      <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity>
+
+      
       <a-assets>
         <a-asset-item
           id="bowser"
