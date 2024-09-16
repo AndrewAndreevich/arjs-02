@@ -3062,8 +3062,8 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             // set the .src of the domElement
             domElement.srcObject = stream;
 
-            var event = new CustomEvent('camera-init', { stream: stream });
-            window.dispatchEvent(event);
+            //var event = new CustomEvent('camera-init', { stream: stream });
+            //window.dispatchEvent(event);
             // to start the video, when it is possible to start it only on userevent. like in android
             document.body.addEventListener('click', function () {
                 //domElement.play();
