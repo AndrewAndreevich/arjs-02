@@ -3057,6 +3057,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
 
         // get a device which satisfy the constraints
         navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
+			alert(stream);
             // set the .src of the domElement
             domElement.srcObject = stream;
 
