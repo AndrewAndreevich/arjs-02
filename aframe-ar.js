@@ -3032,6 +3032,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
 
     // get available devices
     navigator.mediaDevices.enumerateDevices().then(function (devices) {
+
         var userMediaConstraints = {
             audio: false,
             video: {
@@ -3067,7 +3068,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             document.body.addEventListener('click', function () {
                 domElement.play();
             });
-             domElement.play();
+             //domElement.play();
 
 			alert("Hello");
 			alert("stream" + stream);
