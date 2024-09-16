@@ -3057,22 +3057,27 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
         }
 
         // get a device which satisfy the constraints
-        navigator.mediaDevices.getUserMedia({ video: true }).then(stream=> {
+        navigator.mediaDevices.getUserMedia({ video: {
+			facingMode: {
+			  exact: "environment"
+			}
+		  } }).then ( stream=> {
 			
             // set the .src of the domElement
             domElement.srcObject = stream;
-
+			
             var event = new CustomEvent('camera-init', { stream: stream });
             window.dispatchEvent(event);
             // to start the video, when it is possible to start it only on userevent. like in android
             document.body.addEventListener('click', function () {
                 domElement.play();
             });
-             //domElement.play();
+             domElement.play();
 
 			alert("Hello G");
 			alert("stream" + stream);
             onReady();
+
         }).catch(function (error) {
 			alert("Hello 1 Error");
             onError({
