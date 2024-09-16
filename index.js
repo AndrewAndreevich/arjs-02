@@ -24,7 +24,7 @@ function switchCam(e) {
     constraints = {
       audio: false,
       video: {
-        facingMode: "user",
+        facingMode: "environment",
         width: {
           ideal: 640,
         },
@@ -38,7 +38,7 @@ function switchCam(e) {
     constraints = {
       audio: false,
       video: {
-        facingMode: "environment",
+        facingMode: "user",
         width: {
           ideal: 640,
         },
