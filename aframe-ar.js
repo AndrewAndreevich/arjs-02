@@ -3074,19 +3074,18 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             });
              domElement.play();
 
-			alert("Hello G");
-			alert("stream" + stream);
+
             onReady();
 
         }).catch(function (error) {
-			alert("Hello 1 Error");
+			
             onError({
                 name: error.name,
                 message: error.message
             });
         });
     }).catch(function (error) {
-		alert("Hello 2");
+		
         onError({
             message: error.message
         });
