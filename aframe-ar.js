@@ -3057,7 +3057,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
 
         // get a device which satisfy the constraints
         navigator.mediaDevices.getUserMedia(userMediaConstraints).then(function success(stream) {
-			alert(stream);
+			
             // set the .src of the domElement
             domElement.srcObject = stream;
 
@@ -3069,14 +3069,17 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             });
             // domElement.play();
 
+			alert("Hello");
             onReady();
         }).catch(function (error) {
+			alert("Hello 1");
             onError({
                 name: error.name,
                 message: error.message
             });
         });
     }).catch(function (error) {
+		alert("Hello 2");
         onError({
             message: error.message
         });
