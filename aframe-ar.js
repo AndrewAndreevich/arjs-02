@@ -3070,7 +3070,7 @@ ARjs.Source.prototype._initSourceWebcam = function (onReady, onError) {
             });
              //domElement.play();
 
-			alert("Hello");
+			alert("Hello G");
 			alert("stream" + stream);
             onReady();
         }).catch(function (error) {
