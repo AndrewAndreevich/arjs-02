@@ -1,5 +1,5 @@
 var devices = [];
-var selectedCamera = "env";
+var selectedCamera = "user";
 
 function handleError(error) {
   console.log("Something went wrong: ", error.message, error.name);
@@ -24,7 +24,7 @@ function switchCam(e) {
     constraints = {
       audio: false,
       video: {
-        facingMode: "environment",
+        facingMode: "user",
         width: {
           ideal: 640,
         },
@@ -38,7 +38,7 @@ function switchCam(e) {
     constraints = {
       audio: false,
       video: {
-        facingMode: "user",
+        facingMode: "environment",
         width: {
           ideal: 640,
         },
@@ -55,6 +55,7 @@ function switchCam(e) {
 
   var oldStream = domElement.srcObject;
   oldStream.getTracks().forEach(function (track) {
+    
     track.stop();
     console.log("Current stream stopped");
   });
