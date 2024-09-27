@@ -12,196 +12,38 @@
     <script src="component.js"></script>
 
 
+
+
+
   </head>
 
-  <script>
-    console.log("Hello");
-    function sayHello() {
-        alert("Hello, World!");
-    }
-
-    const queryString = window.location.search;
-    console.log(queryString);
-    const urlParams = new URLSearchParams(queryString);
-    console.log(urlParams);
-    const marker = urlParams.get('marker');
-    const object = urlParams.get('object');
-    
-    console.log(marker);
-    console.log(object);
-    
-//file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker= https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
-
-    window.onload = function() {
-        console.log("Hello 3");
-           //when the document is finished loading, replace everything
-           //between the <a ...> </a> tags with the value of splitText
-       var markerEl = document.getElementById("animated-marker");
-       markerEl.setAttribute("url", marker); 
-       console.log(markerEl);
-
-       var objectEl = document.getElementById("animated-model");
-       objectEl.setAttribute("gltf-model", object); 
-       console.log(objectEl);
-
-    } 
-
-    
-</script>
-
-
-
-
-
-
-<!-- import events.js script -->
-<!-- <script>
-   
-    AFRAME.registerComponent('markerhandler', {
-
-init: function() {
-const animatedMarker = document.querySelector("#animated-marker");
-const aEntity = document.querySelector("#animated-model");
-
-// every click, we make our model grow in size :)
-animatedMarker.addEventListener('click', function(ev, target){
-    const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-    if (aEntity && intersectedElement === aEntity) {
-        //const scale = aEntity.getAttribute('scale');
-        //Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
-        // aEntity.setAttribute('scale', scale);
-
-        // Send `message` to the parent using the postMessage method on the window.parent reference.
-        clickCount+=1;
-        window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
-
-       //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
-        document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
-    }
-});
-}});
-</script> -->
-
-
-
-
-
-
-
-<script>
-
-var clickCount = 0;
-var allowClick = false;
-
-
-
-AFRAME.registerComponent('markerhandler', {
-      init: function () {
-        this.el.sceneEl.addEventListener('markerFound', () => {
-          // redirect to custom URL
-          document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
-            allowClick = true;
-        });
-
-        this.el.sceneEl.addEventListener('markerLost', () => {
-          // redirect to custom URL
-          document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
-          allowClick = false;
-        });
-
-    }});
-
-
-
-    
-
-
-    //
-
-
-
-
-
-AFRAME.registerComponent('change-color-on-hover', {
-  schema: {
-    color: {default: 'red'}
-  },
-
-  init: function () {
-
-    var data = this.data;
-    var el = document.querySelector("#animated-model"); // <a-box>
-   // var defaultColor = el.getAttribute('material').color;
-
-
-    
-
-    el.addEventListener('click', function () {
-        if(allowClick)
-    {
-
-      // el.setAttribute('color', data.color);
-       clickCount+=1;
-       // window.parent.postMessage("message "+ globalThis.clickCount+" env = "+JSON.stringify(ev, null, 4) +" target = "+target , "*");
-       //document.getElementById('debugText').setAttribute('value', 'Click '+globalThis.clickCount);
-        document.querySelector("#debugText").setAttribute('text',  "value: "+ "Click "+globalThis.clickCount +";color:red" );
-
-    }
-    
-    });
-
-   //el.addEventListener('mouseleave', function () {
-   //  el.setAttribute('color', defaultColor);
-   //});
-  }
-});
-
-
-
-
-
-
-
-
-
-
-
- 
-</script>
-
-
-<body >
-    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers 
-     
-     <a-box  color="#ffffff00" >   </a-box>
-    https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
-    https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf
-
-     -->
-    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
-
-    <a-assets>
-        <a-asset-item id="animated-asset" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/models/CesiumMan.gltf"></a-asset-item>
-    </a-assets>
-
-    <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url="" >
-
-
-            <a-entity
-            id="animated-model"
-            change-color-on-hover="color: blue"
-            position="0 0 0"
-            scale="0.05 0.05 0.05"
-            gltf-model=""
-            ></a-entity>
-
-        
-        <a-entity id="debugTitle" position="1.5 0 -0.1" scale="2 2 2" rotation="-90 0 0" text="value: marker not there ;color:black"></a-entity>
-        <a-entity id="debugText"  position="1.5 0 0" scale="2 2 2" rotation="-90 0 0" text="value: status ;color:white"></a-entity>
-    </a-marker>
-
-    <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
-    <a-entity camera></a-entity>
+  <body style="margin: 0px; overflow: hidden">
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      
+    >
+      <a-assets>
+        <a-asset-item
+          id="bowser"
+          src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
+        >
+        </a-asset-item>
+      </a-assets>
+      <a-marker type="barcode" value="0"> 
+        <a-entity
+          position="0 0 0"
+          scale="0.08 0.08 0.08"
+          gltf-model="#bowser"
+          rotation="-90 -90 0"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
     </a-scene>
-</body>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  </body>
 </html>
