@@ -15,30 +15,7 @@
   <body style="margin: 0px; overflow: hidden">
 
 
-    <script>
 
-      
-          AFRAME.registerComponent('markerhandler', {
-                init: function () {
-                  this.el.sceneEl.addEventListener('markerFound', () => {
-                    // redirect to custom URL
-                    //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
-                     // allowClick = true;
-                      window.parent.postMessage("FOUND" , "*");
-                  });
-      
-                  this.el.sceneEl.addEventListener('markerLost', () => {
-                    // redirect to custom URL
-                   // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
-                   // allowClick = false;
-                    window.parent.postMessage("LOST" , "*");
-                  });
-      
-              }});
-      
-
-              
-    </script>
 
     
     <script>
@@ -78,7 +55,7 @@
       vr-mode-ui="enabled: false"
     >
 
-      <a-marker markerhandler id="animated-marker" type="pattern" url="">
+      <a-marker  id="animated-marker" type="pattern" url="">
         <a-entity
           id="animated-model"
           position="0 0 0"
