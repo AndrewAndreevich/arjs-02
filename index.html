@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <!-- rawgithack development URL -->
+    <!-- rawgithack development URL   <script src="component.js"></script> -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
-    <script src="component.js"></script>
+   
   </head>
 
   <body style="margin: 0px; overflow: hidden">
@@ -23,7 +23,7 @@
           // redirect to custom URL
           //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
            // allowClick = true;
-            //window.parent.postMessage("FOUND" , "*");
+            window.parent.postMessage("FOUND" , "*");
               document.querySelector("#titleg").innerHTML = "FOUND"
         });
      
@@ -31,7 +31,7 @@
           // redirect to custom URL
          document.querySelector("#titleg").innerHTML = "LOST"
          // allowClick = false;
-         // window.parent.postMessage("LOST" , "*");
+          window.parent.postMessage("LOST" , "*");
         });
      
          }});
@@ -47,7 +47,6 @@
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
-      switch-camera
     >
       <a-assets>
         <a-asset-item
