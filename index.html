@@ -2,11 +2,16 @@
 <html lang="en">
   <head>
     <title>AR - Marker based</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- rawgithack development URL -->
+    <!-- rawgithack development URL 
+     
+    https://andrewandreevich.github.io/arjs-02/?marker=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt&object=https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb
+    
+    -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="component.js"></script>
@@ -15,9 +20,6 @@
   <body style="margin: 0px; overflow: hidden">
 
 
-
-
-    
     <script>
 
       const queryString = window.location.search;
@@ -55,12 +57,12 @@
       vr-mode-ui="enabled: false"
     >
 
-      <a-marker  id="animated-marker" type="pattern" url="">
+      <a-marker  id="animated-marker" type="pattern" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt">
         <a-entity
           id="animated-model"
           position="0 0 0"
           scale="0.04 0.04 0.04"
-          gltf-model=""
+          gltf-model="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
           rotation="-90 0 0"
         ></a-entity>
       </a-marker>
