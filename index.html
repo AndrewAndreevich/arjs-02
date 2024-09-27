@@ -14,6 +14,39 @@
 
   <body style="margin: 0px; overflow: hidden">
 
+
+    
+    <script>
+
+      const queryString = window.location.search;
+      console.log(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      console.log(urlParams);
+      const marker = urlParams.get('marker');
+      const object = urlParams.get('object');
+      
+      console.log(marker);
+      console.log(object);
+      
+      window.onload = function() {
+          console.log("Hello 3");
+             //when the document is finished loading, replace everything
+             //between the <a ...> </a> tags with the value of splitText
+         var markerEl = document.getElementById("animated-marker");
+         markerEl.setAttribute("url", marker); 
+         console.log(markerEl);
+
+         var objectEl = document.getElementById("animated-model");
+         objectEl.setAttribute("gltf-model", object); 
+         console.log(objectEl);
+
+      } 
+
+      
+  </script>
+
+
+
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
@@ -27,12 +60,13 @@
         >
         </a-asset-item>
       </a-assets>
-      <a-marker type="pattern" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt">
+      <a-marker id="animated-marker" type="pattern" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt">
         <a-entity
+          id="animated-model"
           position="0 0 0"
-          scale="0.08 0.08 0.08"
+          scale="0.04 0.04 0.04"
           gltf-model="#bowser"
-          rotation="-90 -90 0"
+          rotation="-90 0 0"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
