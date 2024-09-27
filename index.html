@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AR - Marker based</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <head>
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+   </head>
+
     <link rel="stylesheet" href="styles.css" />
 
     <!-- rawgithack development URL switch-camera -->
@@ -83,7 +84,7 @@
 
     <a-scene
       embedded
-      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
       
