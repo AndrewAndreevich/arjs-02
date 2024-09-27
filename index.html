@@ -19,23 +19,23 @@
     <script>
 
       
-           //   AFRAME.registerComponent('markerhandler', {
-           //   init: function () {
-           //     this.el.sceneEl.addEventListener('markerFound', () => {
-           //       // redirect to custom URL
-           //       //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
-           //        // allowClick = true;
-           //         window.parent.postMessage("FOUND" , "*");
-           //     });
+           AFRAME.registerComponent('markerhandler', {
+           init: function () {
+             this.el.sceneEl.addEventListener('markerFound', () => {
+               // redirect to custom URL
+               //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+                // allowClick = true;
+                 window.parent.postMessage("FOUND" , "*");
+             });
       
-           //     this.el.sceneEl.addEventListener('markerLost', () => {
-           //       // redirect to custom URL
-           //      // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
-           //      // allowClick = false;
-           //       window.parent.postMessage("LOST" , "*");
-           //     });
+             this.el.sceneEl.addEventListener('markerLost', () => {
+               // redirect to custom URL
+              // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+              // allowClick = false;
+               window.parent.postMessage("LOST" , "*");
+             });
       
-           //      }});
+              }});
       
 
               
@@ -74,12 +74,12 @@
 
     <a-scene
       embedded
-      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
     >
 
-      <a-marker  id="animated-marker" type="pattern" url="">
+      <a-marker markerhandler id="animated-marker" type="pattern" url="">
         <a-entity
           id="animated-model"
           position="0 0 0"
