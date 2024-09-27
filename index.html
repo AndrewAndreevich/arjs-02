@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AR - Marker based</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title id="gtitle">AR - Marker based</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- rawgithack development URL 
-     
-    https://andrewandreevich.github.io/arjs-02/?marker=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt&object=https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb
-    
-    -->
+    <!-- rawgithack development URL -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="component.js"></script>
@@ -20,6 +16,32 @@
   <body style="margin: 0px; overflow: hidden">
 
 
+    <script>
+
+      
+           //   AFRAME.registerComponent('markerhandler', {
+           //   init: function () {
+           //     this.el.sceneEl.addEventListener('markerFound', () => {
+           //       // redirect to custom URL
+           //       //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+           //        // allowClick = true;
+           //         window.parent.postMessage("FOUND" , "*");
+           //     });
+      
+           //     this.el.sceneEl.addEventListener('markerLost', () => {
+           //       // redirect to custom URL
+           //      // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+           //      // allowClick = false;
+           //       window.parent.postMessage("LOST" , "*");
+           //     });
+      
+           //      }});
+      
+
+              
+    </script>
+
+    
     <script>
 
       const queryString = window.location.search;
@@ -57,12 +79,12 @@
       vr-mode-ui="enabled: false"
     >
 
-      <a-marker  id="animated-marker" type="pattern" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt">
+      <a-marker  id="animated-marker" type="pattern" url="">
         <a-entity
           id="animated-model"
           position="0 0 0"
           scale="0.04 0.04 0.04"
-          gltf-model="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
+          gltf-model=""
           rotation="-90 0 0"
         ></a-entity>
       </a-marker>
