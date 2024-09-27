@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title id="gtitle">AR - Marker based</title>
+    <title>AR - Marker based</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
 
     <!-- rawgithack development URL -->
@@ -15,77 +14,26 @@
 
   <body style="margin: 0px; overflow: hidden">
 
-
-    <script>
-
-      
-        //  AFRAME.registerComponent('markerhandler', {
-        //  init: function () {
-        //    this.el.sceneEl.addEventListener('markerFound', () => {
-        //      // redirect to custom URL
-        //      //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
-        //       // allowClick = true;
-        //        window.parent.postMessage("FOUND" , "*");
-        //    });
-      
-        //    this.el.sceneEl.addEventListener('markerLost', () => {
-        //      // redirect to custom URL
-        //     // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
-        //     // allowClick = false;
-        //      window.parent.postMessage("LOST" , "*");
-        //    });
-      
-        //     }});
-      
-
-              
-    </script>
-
-    
-    <script>
-
-      const queryString = window.location.search;
-      console.log(queryString);
-      const urlParams = new URLSearchParams(queryString);
-      console.log(urlParams);
-      const marker = urlParams.get('marker');
-      const object = urlParams.get('object');
-      
-      console.log(marker);
-      console.log(object);
-      
-      window.onload = function() {
-         console.log("Set params..");
-
-         var markerEl = document.getElementById("animated-marker");
-         markerEl.setAttribute("url", marker); 
-         console.log(markerEl);
-
-         var objectEl = document.getElementById("animated-model");
-         objectEl.setAttribute("gltf-model", object); 
-         console.log(objectEl);
-
-      } 
-
-      
-  </script>
-
-
-
     <a-scene
       embedded
-      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
+      switch-camera
     >
-
-      <a-marker markerhandler emitevents="true" id="animated-marker" type="pattern" url="">
+      <a-assets>
+        <a-asset-item
+          id="bowser"
+          src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
+        >
+        </a-asset-item>
+      </a-assets>
+      <a-marker type="barcode" value="0">
         <a-entity
-          id="animated-model"
           position="0 0 0"
-          scale="0.04 0.04 0.04"
-          gltf-model=""
-          rotation="-90 0 0"
+          scale="0.08 0.08 0.08"
+          gltf-model="#bowser"
+          rotation="-90 -90 0"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
