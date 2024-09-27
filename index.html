@@ -15,6 +15,56 @@
   <body style="margin: 0px; overflow: hidden">
 
 
+    <script>
+
+      var clickCount = 0;
+      var allowClick = false;
+      
+      
+      
+          AFRAME.registerComponent('markerhandler', {
+                init: function () {
+                  this.el.sceneEl.addEventListener('markerFound', () => {
+                    window.parent.postMessage("FOUND" , "*");
+                  });
+      
+                  this.el.sceneEl.addEventListener('markerLost', () => {
+                    // redirect to custom URL
+                    window.parent.postMessage("LOST" , "*");
+                  });
+      
+              }});
+      
+
+              
+    </script>
+    
+
+    <script>
+
+      var clickCount = 0;
+      var allowClick = false;
+      
+          AFRAME.registerComponent('markerhandler', {
+                init: function () {
+                  this.el.sceneEl.addEventListener('markerFound', () => {
+                    // redirect to custom URL
+                    document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+                      allowClick = true;
+                  });
+      
+                  this.el.sceneEl.addEventListener('markerLost', () => {
+                    // redirect to custom URL
+                    document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+                    allowClick = false;
+                  });
+      
+              }});
+      
+
+              
+    </script>
+
     
     <script>
 
@@ -29,9 +79,8 @@
       console.log(object);
       
       window.onload = function() {
-          console.log("Hello 3");
-             //when the document is finished loading, replace everything
-             //between the <a ...> </a> tags with the value of splitText
+         console.log("Set params..");
+
          var markerEl = document.getElementById("animated-marker");
          markerEl.setAttribute("url", marker); 
          console.log(markerEl);
