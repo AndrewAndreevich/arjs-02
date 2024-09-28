@@ -39,9 +39,8 @@
       
       console.log(marker);
       console.log(object);
-      
-      window.onload = function() {
-         console.log("Set params..");
+
+      console.log("Set params..");
 
          var markerEl = document.getElementById("animated-marker");
          markerEl.setAttribute("url", marker); 
@@ -50,6 +49,11 @@
          var objectEl = document.getElementById("animated-model");
          objectEl.setAttribute("gltf-model", object); 
          console.log(objectEl);
+
+         
+      
+      window.onload = function() {
+         
 
       } 
         
