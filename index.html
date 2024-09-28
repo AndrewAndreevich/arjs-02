@@ -11,42 +11,12 @@
     <script src="aframe-ar.js"></script>
    
 
-    <script>
-      
 
-    
-
-      const queryString = window.location.search;
-   console.log(queryString);
-   const urlParams = new URLSearchParams(queryString);
-   console.log(urlParams);
-   const marker = urlParams.get('marker');
-   const object = urlParams.get('object');
-   
-   console.log(marker);
-   console.log(object);
-   
-   window.onload = function() {
-      console.log("Set params..");
-
-      var markerEl = document.getElementById("animated-marker");
-      markerEl.setAttribute("url", marker); 
-      console.log(markerEl);
-
-      var objectEl = document.getElementById("animated-model");
-      objectEl.setAttribute("gltf-model", object); 
-      console.log(objectEl);
-
-   } 
-
-
-
-  
-          
-</script>
 
 
   </head>
+
+  
 
   <body style="margin: 0px; overflow: hidden">
     <a-scene
@@ -74,4 +44,39 @@
 
 
   </body>
+
+
+  <script>
+      
+
+    
+
+    const queryString = window.location.search;
+ console.log(queryString);
+ const urlParams = new URLSearchParams(queryString);
+ console.log(urlParams);
+ const marker = urlParams.get('marker');
+ const object = urlParams.get('object');
+ 
+ console.log(marker);
+ console.log(object);
+ 
+ window.onload = function() {
+    console.log("Set params..");
+
+    var markerEl = document.getElementById("animated-marker");
+    markerEl.setAttribute("url", marker); 
+    console.log(markerEl);
+
+    var objectEl = document.getElementById("animated-model");
+    objectEl.setAttribute("gltf-model", object); 
+    console.log(objectEl);
+
+ } 
+
+
+
+
+        
+</script>
 </html>
