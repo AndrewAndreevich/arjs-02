@@ -17,33 +17,6 @@
 
     <script>
       
-
-
-        </script>
-
-    <a-scene
-      embedded
-      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
-      renderer="logarithmicDepthBuffer: true;"
-      vr-mode-ui="enabled: false"
-    >
- 
-      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="">
-        <a-entity
-          id="animated-model"
-          position="0 0 0"
-          scale="0.04 0.04 0.04"
-          gltf-model=""
-          rotation="-90 0 0"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
-
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-
-    <script>
-      
       AFRAME.registerComponent('markerhandler', {
       init: function () {
         this.el.sceneEl.addEventListener('markerFound', () => {
@@ -58,7 +31,7 @@
      
          }});
 
-         
+
  
 
          const queryString = window.location.search;
@@ -86,6 +59,29 @@
      
              
    </script>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+    >
+ 
+      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="">
+        <a-entity
+          id="animated-model"
+          position="0 0 0"
+          scale="0.04 0.04 0.04"
+          gltf-model=""
+          rotation="-90 0 0"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+
 
 
   </body>
