@@ -16,6 +16,9 @@
 
     <script>
 
+
+
+
       
       AFRAME.registerComponent('markerhandler', {
       init: function () {
@@ -61,6 +64,27 @@
          objectEl.setAttribute("gltf-model", object); 
          console.log(objectEl);
       }
+
+
+
+      AFRAME.registerComponent('animated-marker', {
+  // ...
+  init: function () {
+    const queryString = window.location.search;
+      console.log(queryString);
+      alert(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      console.log(urlParams);
+      const marker = urlParams.get('marker');
+      var markerEl = document.getElementById("animated-marker");
+      markerEl.setAttribute("url", marker); 
+      console.log(markerEl);
+
+  }
+
+   });
+
+
              
    </script>
 
