@@ -15,58 +15,7 @@
   <body style="margin: 0px; overflow: hidden">
 
 
-    <script>
-      
-      AFRAME.registerComponent('markerhandler', {
-      init: function () {
-        this.el.sceneEl.addEventListener('markerFound', () => {
-            window.parent.postMessage("FOUND" , "*");
-            document.querySelector("#titleg").innerHTML = "FOUND"
-        });
-     
-        this.el.sceneEl.addEventListener('markerLost', () => {
-         document.querySelector("#titleg").innerHTML = "LOST"
-          window.parent.postMessage("LOST" , "*");
-        });
 
-
-        const queryString = window.location.search;
-      console.log(queryString);
-      const urlParams = new URLSearchParams(queryString);
-      console.log(urlParams);
-      const marker = urlParams.get('marker');
-      const object = urlParams.get('object');
-      
-      console.log(marker);
-      console.log(object);
-
-      console.log("Set params..");
-
-         var markerEl = document.getElementById("animated-marker");
-         markerEl.setAttribute("url", marker); 
-         console.log(markerEl);
-
-         var objectEl = document.getElementById("animated-model");
-         objectEl.setAttribute("gltf-model", object); 
-         console.log(objectEl);
-
-         
-      
-      window.onload = function() {
-         
-
-      } 
-        
-     
-         }});
-
-
- 
-
-
-     
-             
-   </script>
 
     <a-scene
       embedded
@@ -89,7 +38,52 @@
 
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
+    <script>
+      
 
+      AFRAME.registerComponent('markerhandler', {
+      init: function () {
+        this.el.sceneEl.addEventListener('markerFound', () => {
+            window.parent.postMessage("FOUND" , "*");
+            document.querySelector("#titleg").innerHTML = "FOUND"
+        });
+     
+        this.el.sceneEl.addEventListener('markerLost', () => {
+         document.querySelector("#titleg").innerHTML = "LOST"
+          window.parent.postMessage("LOST" , "*");
+        });
+     
+         }});
+
+
+
+ 
+
+         const queryString = window.location.search;
+      console.log(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      console.log(urlParams);
+      const marker = urlParams.get('marker');
+      const object = urlParams.get('object');
+      
+      console.log(marker);
+      console.log(object);
+      
+      window.onload = function() {
+         console.log("Set params..");
+
+         var markerEl = document.getElementById("animated-marker");
+         markerEl.setAttribute("url", marker); 
+         console.log(markerEl);
+
+         var objectEl = document.getElementById("animated-model");
+         objectEl.setAttribute("gltf-model", object); 
+         console.log(objectEl);
+
+      } 
+     
+             
+   </script>
 
 
   </body>
