@@ -15,8 +15,24 @@
   <body style="margin: 0px; overflow: hidden">
 
 
+    <script>
+      
+      AFRAME.registerComponent('markerhandler', {
+      init: function () {
+        this.el.sceneEl.addEventListener('markerFound', () => {
+            window.parent.postMessage("FOUND" , "*");
+            document.querySelector("#titleg").innerHTML = "FOUND"
+        });
+     
+        this.el.sceneEl.addEventListener('markerLost', () => {
+         document.querySelector("#titleg").innerHTML = "LOST"
+          window.parent.postMessage("LOST" , "*");
+        });
+     
+         }});
 
 
+        </script>
 
     <a-scene
       embedded
@@ -25,12 +41,12 @@
       vr-mode-ui="enabled: false"
     >
  
-      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="https://andrewandreevich.github.io/arjs-02/marker.patt">
+      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="">
         <a-entity
           id="animated-model"
           position="0 0 0"
           scale="0.04 0.04 0.04"
-          gltf-model="https://andrewandreevich.github.io/arjs-02/06bd98b4-97ee-4c07-a546-fe39ca205034_bowser.glb"
+          gltf-model=""
           rotation="-90 0 0"
         ></a-entity>
       </a-marker>
@@ -81,6 +97,6 @@
              
    </script>
 
-   
+
   </body>
 </html>
