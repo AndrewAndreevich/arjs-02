@@ -57,19 +57,7 @@
 
     <script>
       
-      AFRAME.registerComponent('markerhandler', {
-      init: function () {
-        this.el.sceneEl.addEventListener('markerFound', () => {
-            window.parent.postMessage("FOUND" , "*");
-            document.querySelector("#titleg").innerHTML = "FOUND"
-        });
-     
-        this.el.sceneEl.addEventListener('markerLost', () => {
-         document.querySelector("#titleg").innerHTML = "LOST"
-          window.parent.postMessage("LOST" , "*");
-        });
-     
-         }});
+ 
 
          const queryString = window.location.search;
       console.log(queryString);
