@@ -38,13 +38,15 @@
      
 
 
-         const queryString = window.location.search;
+      const queryString = window.location.search;
       console.log(queryString);
+      alert(queryString);
       const urlParams = new URLSearchParams(queryString);
       console.log(urlParams);
       const marker = urlParams.get('marker');
+      alert(marker);
       const object = urlParams.get('object');
-      
+      alert(object);
       console.log(marker);
       console.log(object);
       
