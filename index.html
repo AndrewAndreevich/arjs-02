@@ -10,6 +10,42 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
    
+
+    <script>
+      
+
+    
+
+      const queryString = window.location.search;
+   console.log(queryString);
+   const urlParams = new URLSearchParams(queryString);
+   console.log(urlParams);
+   const marker = urlParams.get('marker');
+   const object = urlParams.get('object');
+   
+   console.log(marker);
+   console.log(object);
+   
+   window.onload = function() {
+      console.log("Set params..");
+
+      var markerEl = document.getElementById("animated-marker");
+      markerEl.setAttribute("url", marker); 
+      console.log(markerEl);
+
+      var objectEl = document.getElementById("animated-model");
+      objectEl.setAttribute("gltf-model", object); 
+      console.log(objectEl);
+
+   } 
+
+
+
+  
+          
+</script>
+
+
   </head>
 
   <body style="margin: 0px; overflow: hidden">
@@ -20,7 +56,7 @@
       vr-mode-ui="enabled: false"
     >
  
-      <a-marker markerhandler  emitevents="true" preset="custom" type="pattern" url="" id="animated-marker" >
+      <a-marker markerhandler id="animated-marker" emitevents="true" preset="custom" type="pattern" url=""  >
         <a-entity
           id="animated-model"
           position="0 0 0"
@@ -34,39 +70,7 @@
 
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
-    <script>
-      
 
-    
-
-         const queryString = window.location.search;
-      console.log(queryString);
-      const urlParams = new URLSearchParams(queryString);
-      console.log(urlParams);
-      const marker = urlParams.get('marker');
-      const object = urlParams.get('object');
-      
-      console.log(marker);
-      console.log(object);
-      
-      window.onload = function() {
-         console.log("Set params..");
-
-         var markerEl = document.getElementById("animated-marker");
-         markerEl.setAttribute("url", marker); 
-         console.log(markerEl);
-
-         var objectEl = document.getElementById("animated-model");
-         objectEl.setAttribute("gltf-model", object); 
-         console.log(objectEl);
-
-      } 
-
-
-
-     
-             
-   </script>
 
 
   </body>
