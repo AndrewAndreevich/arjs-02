@@ -36,7 +36,22 @@
 
     <script>
       
-
+      AFRAME.registerComponent('markerhandler', {
+      init: function () {
+        
+        this.el.sceneEl.addEventListener('markerFound', () => {
+           document.querySelector("#titleg").innerHTML = "FOUND"
+            window.parent.postMessage("FOUND" , "*");
+           
+        });
+     
+        this.el.sceneEl.addEventListener('markerLost', () => {
+          window.parent.postMessage("LOST" , "*");
+         document.querySelector("#titleg").innerHTML = "LOST"
+         
+        });
+     
+         }});
     
 
          const queryString = window.location.search;
@@ -63,21 +78,7 @@
       } 
 
 
-      AFRAME.registerComponent('markerhandler', {
-      init: function () {
-        this.el.sceneEl.addEventListener('markerFound', () => {
-           document.querySelector("#titleg").innerHTML = "FOUND"
-          //  window.parent.postMessage("FOUND" , "*");
-           
-        });
-     
-        this.el.sceneEl.addEventListener('markerLost', () => {
-         // window.parent.postMessage("LOST" , "*");
-         document.querySelector("#titleg").innerHTML = "LOST"
-         
-        });
-     
-         }});
+
      
              
    </script>
