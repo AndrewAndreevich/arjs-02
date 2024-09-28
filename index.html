@@ -15,10 +15,6 @@
   <body style="margin: 0px; overflow: hidden">
 
     <script>
-
-
-
-
       
       AFRAME.registerComponent('markerhandler', {
       init: function () {
@@ -39,23 +35,6 @@
      
          }});
      
-
-
-
-     
-
-
-      AFRAME.registerComponent('a-marker', {
-  // ...
-  init: function () {
-
-     
-document.querySelector("#titleg").innerHTML = "Hello"
-  }
-
-   });
-
-
              
    </script>
 
@@ -68,12 +47,12 @@ document.querySelector("#titleg").innerHTML = "Hello"
       vr-mode-ui="enabled: false"
     >
  
-      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="">
+      <a-marker id="animated-marker" markerhandler emitevents="true" type="pattern" url="marker=https://andrewandreevich.github.io/arjs-02/marker.patt">
         <a-entity
           id="animated-model"
           position="0 0 0"
           scale="0.08 0.08 0.08"
-          gltf-model=""
+          gltf-model="https://andrewandreevich.github.io/arjs-02/06bd98b4-97ee-4c07-a546-fe39ca205034_bowser.glb"
           rotation="-90 -90 0"
         ></a-entity>
       </a-marker>
