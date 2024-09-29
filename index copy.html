@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
-
-   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-
+    <title id="gtitle">AR - Marker based</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- rawgithack development URL switch-camera -->
+    <!-- rawgithack development URL -->
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="component.js"></script>
+  </head>
 
+  <body style="margin: 0px; overflow: hidden">
 
 
     <script>
-      console.log("Hello");
-      function sayHello() {
-          alert("Hello, World!");
-      }
+
+      
+       AFRAME.registerComponent('markerhandler', {
+       init: function () {
+         this.el.sceneEl.addEventListener('markerFound', () => {
+           // redirect to custom URL
+           //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+            // allowClick = true;
+             window.parent.postMessage("FOUND" , "*");
+         });
+      
+         this.el.sceneEl.addEventListener('markerLost', () => {
+           // redirect to custom URL
+          // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+          // allowClick = false;
+           window.parent.postMessage("LOST" , "*");
+         });
+      
+          }});
+      
+
+              
+    </script>
+
+    
+    <script>
 
       const queryString = window.location.search;
       console.log(queryString);
@@ -33,12 +54,9 @@
       console.log(marker);
       console.log(object);
       
-//file:///C:/Users/Andrey Andreevich/Downloads/ar(1)/index.html?marker= https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/asset.png&object=https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
-
       window.onload = function() {
-          console.log("Hello 3");
-             //when the document is finished loading, replace everything
-             //between the <a ...> </a> tags with the value of splitText
+         console.log("Set params..");
+
          var markerEl = document.getElementById("animated-marker");
          markerEl.setAttribute("url", marker); 
          console.log(markerEl);
@@ -52,52 +70,22 @@
       
   </script>
 
-  
-    <script>
 
-      var clickCount = 0;
-      var allowClick = false;
-      
-      
-      
-          AFRAME.registerComponent('markerhandler', {
-                init: function () {
-                  this.el.sceneEl.addEventListener('markerFound', () => {
-                    window.parent.postMessage("FOUND" , "*");
-                  });
-      
-                  this.el.sceneEl.addEventListener('markerLost', () => {
-                    // redirect to custom URL
-                    window.parent.postMessage("LOST" , "*");
-                  });
-      
-              }});
-      
-
-              
-    </script>
-
-
-  </head>
-
-  <body style="margin: 0px; overflow: hidden">
 
     <a-scene
       embedded
-      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
-      
     >
 
-      </a-assets>
-      <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern"  preset="custom" url=""> 
+      <a-marker markerhandler emitevents="true" id="animated-marker" type="pattern" url="">
         <a-entity
           id="animated-model"
           position="0 0 0"
           scale="0.04 0.04 0.04"
           gltf-model=""
-          rotation="-90 -90 0"
+          rotation="-90 0 0"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
