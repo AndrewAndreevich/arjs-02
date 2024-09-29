@@ -10,6 +10,32 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="component.js"></script>
+    
+    <script>
+
+      
+      AFRAME.registerComponent('markerhandler', {
+      init: function () {
+        this.el.sceneEl.addEventListener('markerFound', () => {
+          // redirect to custom URL
+          //document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "FOUND" );
+           // allowClick = true;
+            window.parent.postMessage("FOUND" , "*");
+        });
+     
+        this.el.sceneEl.addEventListener('markerLost', () => {
+          // redirect to custom URL
+         // document.querySelector("#debugTitle").setAttribute('text',  "value: "+ "LOST" );
+         // allowClick = false;
+          window.parent.postMessage("LOST" , "*");
+        });
+     
+         }});
+     
+
+             
+   </script>
+
   </head>
 
   <body style="margin: 0px; overflow: hidden">
@@ -27,7 +53,7 @@
         >
         </a-asset-item>
       </a-assets>
-      <a-marker type="barcode" value="0">
+      <a-marker markerhandler type="barcode" value="0">
         <a-entity
           position="0 0 0"
           scale="0.08 0.08 0.08"
@@ -37,6 +63,8 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
+
+    
 
 
   </body>
