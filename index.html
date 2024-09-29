@@ -32,7 +32,28 @@
      
          }});
      
+      const queryString = window.location.search;
+      console.log(queryString);
+      const urlParams = new URLSearchParams(queryString);
+      console.log(urlParams);
+      const marker = urlParams.get('marker');
+      const object = urlParams.get('object');
+      
+      console.log(marker);
+      console.log(object);
+      
+      window.onload = function() {
+         console.log("Set params..");
 
+         var markerEl = document.getElementById("bowser");
+         markerEl.setAttribute("url", marker); 
+         console.log(markerEl);
+
+         var objectEl = document.getElementById("animated-model");
+         objectEl.setAttribute("src", object); 
+         console.log(objectEl);
+
+      } 
              
    </script>
 
