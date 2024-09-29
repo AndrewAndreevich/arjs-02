@@ -32,28 +32,28 @@
      
          }});
      
-      const queryString = window.location.search;
-      console.log(queryString);
-      const urlParams = new URLSearchParams(queryString);
-      console.log(urlParams);
-      const marker = urlParams.get('marker');
-      const object = urlParams.get('object');
-      
-      console.log(marker);
-      console.log(object);
-      
-      window.onload = function() {
-         console.log("Set params..");
-
-         var markerEl = document.getElementById("marker");
-         markerEl.setAttribute("url", marker); 
-         console.log(markerEl);
-
-         var objectEl = document.getElementById("bowser");
-         objectEl.setAttribute("src", object); 
-         console.log(objectEl);
-
-      } 
+   //   const queryString = window.location.search;
+   //   console.log(queryString);
+   //   const urlParams = new URLSearchParams(queryString);
+   //   console.log(urlParams);
+   //   const marker = urlParams.get('marker');
+   //   const object = urlParams.get('object');
+   //   
+   //   console.log(marker);
+   //   console.log(object);
+   //   
+   //   window.onload = function() {
+   //      console.log("Set params..");
+//
+   //      var markerEl = document.getElementById("marker");
+   //      markerEl.setAttribute("url", marker); 
+   //      console.log(markerEl);
+//
+   //      var objectEl = document.getElementById("bowser");
+   //      objectEl.setAttribute("src", object); 
+   //      console.log(objectEl);
+//
+   //   } 
              
    </script>
 
@@ -70,11 +70,11 @@
       <a-assets>
         <a-asset-item
           id="bowser"
-          src=""
+          src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
         >
         </a-asset-item>
       </a-assets>
-      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="">
+      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="https://andrewandreevich.github.io/arjs-02/marker-4-akDK06bP.patt">
         <a-entity
           position="0 0 0"
           scale="0.04 0.04 0.04"
