@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="titleg">AR - Marker based</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- rawgithack development URL   <script src="component.js"></script> -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="aframe-ar.js"></script>
+   
+
+
+
+
+  </head>
+
+  
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+    >
+ 
+      <a-marker markerhandler id="animated-marker" emitevents="true" preset="custom" type="pattern" url=""  >
+        <a-entity
+          id="animated-model"
+          position="0 0 0"
+          scale="0.04 0.04 0.04"
+          gltf-model=""
+          rotation="-90 0 0"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+
+
+
+  </body>
+
+
+  <script>
+      
+
+    
+
+    const queryString = window.location.search;
+ console.log(queryString);
+ const urlParams = new URLSearchParams(queryString);
+ console.log(urlParams);
+ const marker = urlParams.get('marker');
+ const object = urlParams.get('object');
+ 
+ console.log(marker);
+ console.log(object);
+ 
+ window.onload = function() {
+    console.log("Set params..");
+
+    var markerEl = document.getElementById("animated-marker");
+    markerEl.setAttribute("url", marker); 
+    console.log(markerEl);
+
+    var objectEl = document.getElementById("animated-model");
+    objectEl.setAttribute("gltf-model", object); 
+    console.log(objectEl);
+
+ } 
+
+
+
+
+        
+</script>
+</html>
