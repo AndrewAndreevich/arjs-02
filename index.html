@@ -45,11 +45,11 @@
       window.onload = function() {
          console.log("Set params..");
 
-         var markerEl = document.getElementById("bowser");
+         var markerEl = document.getElementById("marker");
          markerEl.setAttribute("url", marker); 
          console.log(markerEl);
 
-         var objectEl = document.getElementById("animated-model");
+         var objectEl = document.getElementById("bowser");
          objectEl.setAttribute("src", object); 
          console.log(objectEl);
 
@@ -74,7 +74,7 @@
         >
         </a-asset-item>
       </a-assets>
-      <a-marker markerhandler emitevents="true" type="pattern" url="https://andrewandreevich.github.io/arjs-02/marker-4-akDK06bP.patt">
+      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="https://andrewandreevich.github.io/arjs-02/marker-4-akDK06bP.patt">
         <a-entity
           position="0 0 0"
           scale="0.04 0.04 0.04"
