@@ -16,13 +16,7 @@
 
 
 function getMarker() {
-  console.log("set marker");
-  const queryString = window.location.search;
-          console.log(queryString);
-          const urlParams = new URLSearchParams(queryString);
-          console.log(urlParams);
-          const marker = urlParams.get('marker');
-          return marker;
+
 }
 
 
@@ -53,8 +47,27 @@ function getModel() {
          // allowClick = false;
           window.parent.postMessage("LOST" , "*");
         });
+
+
+          console.log("set marker");
+          const queryString = window.location.search;
+          console.log(queryString);
+          const urlParams = new URLSearchParams(queryString);
+          console.log(urlParams);
+          const marker = urlParams.get('marker');
+          return marker;
+
+
      
-         }});
+         }
+        
+        
+        
+        });
+
+
+
+
      
 
              
@@ -71,7 +84,7 @@ function getModel() {
       vr-mode-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="bowser" src="this.getModel() ">
+        <a-asset-item id="bowser" src="this.getModel()">
         </a-asset-item>
       </a-assets>
       <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="this.getMarker()" >
