@@ -22,8 +22,6 @@ function getMarker() {
           const urlParams = new URLSearchParams(queryString);
           console.log(urlParams);
           const marker = urlParams.get('marker');
-          
-
           return marker;
 }
 
@@ -73,14 +71,10 @@ function getModel() {
       vr-mode-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item
-          id="bowser"
-          
-          src=""
-        >
+        <a-asset-item id="bowser" src="this.getModel() ">
         </a-asset-item>
       </a-assets>
-      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="">
+      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="this.getMarker()" >
         <a-entity
           position="0 0 0"
           scale="0.04 0.04 0.04"
