@@ -32,28 +32,29 @@
      
          }});
      
-   //   const queryString = window.location.search;
-   //   console.log(queryString);
-   //   const urlParams = new URLSearchParams(queryString);
-   //   console.log(urlParams);
-   //   const marker = urlParams.get('marker');
-   //   const object = urlParams.get('object');
-   //   
-   //   console.log(marker);
-   //   console.log(object);
-   //   
-   //   window.onload = function() {
-   //      console.log("Set params..");
-//
-   //      var markerEl = document.getElementById("marker");
-   //      markerEl.setAttribute("url", marker); 
-   //      console.log(markerEl);
-//
-   //      var objectEl = document.getElementById("bowser");
-   //      objectEl.setAttribute("src", object); 
-   //      console.log(objectEl);
-//
-   //   } 
+          const queryString = window.location.search;
+          console.log(queryString);
+          const urlParams = new URLSearchParams(queryString);
+          console.log(urlParams);
+          const marker = urlParams.get('marker');
+          const object = urlParams.get('object');
+              
+          console.log(marker);
+          console.log(object);
+              
+          window.onload = function() {
+             console.log("Set params..");
+          
+             var markerEl = document.getElementById("marker");
+             markerEl.setAttribute("url", marker); 
+             console.log(markerEl);
+          
+             var objectEl = document.getElementById("bowser");
+             objectEl.setAttribute("src", object); 
+             console.log(objectEl);
+//https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb
+//https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt
+      } 
              
    </script>
 
@@ -70,11 +71,12 @@
       <a-assets>
         <a-asset-item
           id="bowser"
-          src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
+          
+          src=""
         >
         </a-asset-item>
       </a-assets>
-      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="https://andrewandreevich.github.io/ar_test_fw2h87kdn/assets/marker.patt">
+      <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="">
         <a-entity
           position="0 0 0"
           scale="0.04 0.04 0.04"
