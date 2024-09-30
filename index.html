@@ -54,13 +54,22 @@ function getModel() {
           console.log(queryString);
           const urlParams = new URLSearchParams(queryString);
           console.log(urlParams);
+
+
+          
           const marker = urlParams.get('marker');
           var markerEl = document.getElementById("marker");
           markerEl.setAttribute("url", marker); 
           console.log(markerEl);
 
+
+          const object = urlParams.get('object');
+          var objectEl = document.getElementById("bowser");
+          objectEl.setAttribute("src", object); 
+          console.log(objectEl);
+
      
-         }
+         
         
         
         
