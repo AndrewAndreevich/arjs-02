@@ -55,8 +55,9 @@ function getModel() {
           const urlParams = new URLSearchParams(queryString);
           console.log(urlParams);
           const marker = urlParams.get('marker');
-          return marker;
-
+          var markerEl = document.getElementById("animated-marker");
+          markerEl.setAttribute("url", marker); 
+          console.log(markerEl);
 
      
          }
