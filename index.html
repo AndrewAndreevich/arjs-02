@@ -82,10 +82,10 @@ function getModel() {
           console.log(urlParams);
 
 
-         
+          
           const object = urlParams.get('object');
-          var objectEl = document.getElementById("bowser");
-          objectEl.setAttribute("src", object); 
+          var objectEl = document.getElementById("model");
+          objectEl.setAttribute("gltf-model", object); 
           console.log(objectEl);
 
         }});
@@ -105,14 +105,16 @@ function getModel() {
       vr-mode-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item objectset emitevents="true" id="bowser" src="">
+        <a-asset-item  emitevents="true" id="bowser" src="">
         </a-asset-item>
       </a-assets>
       <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="" >
         <a-entity
+          id="model"
+          objectset
           position="0 0 0"
           scale="0.04 0.04 0.04"
-          gltf-model="#bowser"
+          gltf-model=""
           rotation="-90 0 0"
         ></a-entity>
       </a-marker>
