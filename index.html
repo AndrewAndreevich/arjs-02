@@ -84,10 +84,7 @@
 
             document.body.addEventListener("click", function (evt) {
                 console.log("hide cover image")
-                //note evt.target can be a nested element, not the body element, resulting in misfires
-                let body = document.querySelector("body");
-                body.style.backgroundImage = "none";
-
+                window.parent.postMessage("COVER_HIDE", "*");
             });
         </script>
 
