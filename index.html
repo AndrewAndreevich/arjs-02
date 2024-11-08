@@ -79,9 +79,51 @@
                     objectEl.setAttribute("gltf-model", object);
                     console.log(objectEl);
 
+                    
+
+
                 }
             });
 
+
+            AFRAME.registerComponent('move', 
+            {
+                init: function() {
+                // wait until the model is loaded
+                this.el.addEventListener("model-loaded", evt => {
+                    const mixer = new THREE.AnimationMixer(this.el.components['gltf-model'].model);
+                    const clips = this.el.components['gltf-model'].model.animations[0];
+                    var animationExist;
+                    if(clips!=null)
+                    {
+                        animationExist = true;
+                        mixer.clipAction(clips).play();
+                        // "expose" the animation mixer
+                        this.mixer = mixer;
+                    }
+                    else
+                    {
+                        animationExist = false;
+                    }
+            })
+            },
+            // on each render loop (actually before each render loop)
+            tick: function(t, dt) 
+            {
+                if (!this.mixer) return; // if the mixer exists
+                if(this.animationExist)
+                {
+                    this.mixer.update(dt / 1000)
+                }
+                else
+                {
+                    return
+                }
+            }
+            });
+
+
+            
             document.addEventListener("click", () => {
                 console.log("hide cover image")
                 window.parent.postMessage("COVER_HIDE", "*");
@@ -101,7 +143,7 @@
                 <a-asset-item emitevents="true" id="bowser" src="">
                 </a-asset-item>
             </a-assets>
-            <a-marker id="marker" markerhandler emitevents="true" type="pattern" url="">
+            <a-marker id="marker" markerhandler move emitevents="true" type="pattern" url="">
                 <a-entity
                         id="model"
                         objectset
